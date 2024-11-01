@@ -52,10 +52,11 @@ class WardrobeActivity : AppCompatActivity() {
         }
 
         toolbarWardrobe = findViewById(R.id.toolbarWardrobe)
+        recyclerViewRV = findViewById(R.id.recyclerViewRV)
+
         setSupportActionBar(toolbarWardrobe)
         title = "Гардероб"
 
-        recyclerViewRV = findViewById(R.id.recyclerViewRV)
         recyclerViewRV.layoutManager = LinearLayoutManager(this)
         val adapter = CustomAdapter(clothes)
         recyclerViewRV.adapter = adapter
