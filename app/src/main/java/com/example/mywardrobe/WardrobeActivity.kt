@@ -1,6 +1,7 @@
 package com.example.mywardrobe
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -56,7 +57,17 @@ class WardrobeActivity : AppCompatActivity() {
 
         recyclerViewRV = findViewById(R.id.recyclerViewRV)
         recyclerViewRV.layoutManager = LinearLayoutManager(this)
-        recyclerViewRV.adapter = CustomAdapter(clothes)
+        val adapter = CustomAdapter(clothes)
+        recyclerViewRV.adapter = adapter
+        recyclerViewRV.setHasFixedSize(true)
+        adapter.setOnUserClickListener(object : CustomAdapter.OnClothesClickListener {
+            override fun onClothesClick(clothes: Clothes, position: Int) {
+                val intent = Intent(this@WardrobeActivity, DetailsActivity::class.java)
+                intent.putExtra("clothes", clothes)
+                startActivity(intent)
+            }
+
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

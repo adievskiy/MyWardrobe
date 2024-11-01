@@ -8,6 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(private val clothes: MutableList<Clothes>) : RecyclerView.Adapter<CustomAdapter.UserViewHolder>(){
+
+    private var onClothesClickListener: OnClothesClickListener? = null
+
+    interface OnClothesClickListener {
+        fun onClothesClick(clothes: Clothes, position: Int)
+    }
+
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageIV: ImageView = itemView.findViewById(R.id.imageIV)
         val nameTV: TextView = itemView.findViewById(R.id.nameTV)
@@ -27,5 +34,14 @@ class CustomAdapter(private val clothes: MutableList<Clothes>) : RecyclerView.Ad
         holder.imageIV.setImageResource(cloth.image)
         holder.nameTV.text = cloth.name
         holder.descriptionTV.text = cloth.description
+        holder.itemView.setOnClickListener {
+            if (onClothesClickListener != null) {
+                onClothesClickListener!!.onClothesClick(cloth, position)
+            }
+        }
+    }
+
+    fun setOnUserClickListener(onClothesClickListener: OnClothesClickListener) {
+        this.onClothesClickListener = onClothesClickListener
     }
 }

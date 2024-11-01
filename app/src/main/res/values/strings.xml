@@ -5,4 +5,8 @@
     <string name="titleExitItem">Выход</string>
     <string name="textStartBTN">К гардеробу!</string>
     <string name="textTitleTV">МОЙ ГАРДЕРОБ</string>
+    <string name="textNameItemTV">nameItemTV</string>
+    <string name="textDescriptionItemTV">description item</string>
+    <string name="hintUpdateNameET">Введите наименование</string>
+    <string name="hintUpdateDescriptionET">Введите описание</string>
 </resources>
